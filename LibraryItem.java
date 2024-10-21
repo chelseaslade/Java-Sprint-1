@@ -1,5 +1,7 @@
 public class LibraryItem {
     //Attributes
+    protected String id, title, author, ISBN, publisher;
+    protected int numCopies;
 
     //Constructors
 
