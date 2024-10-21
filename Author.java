@@ -4,4 +4,8 @@ public class Author {
     //Constructors
 
     //Methods
+    //addAuthor()
+    //editAuthor()
+    //deleteAuthor()
+
 }

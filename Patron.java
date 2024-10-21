@@ -4,6 +4,9 @@ public class Patron {
     //Constructors
 
     //Methods
+    //addPatron()
+    //editPatron()
+    //deletePatron()
 
     //Subclasses
     //Employee

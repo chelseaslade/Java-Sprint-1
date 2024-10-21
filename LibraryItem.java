@@ -4,6 +4,9 @@ public class LibraryItem {
     //Constructors
 
     //Methods
+    //addNewItem()
+    //editItem()
+    //deleteItem()
 
     //Subclasses
     //Periodical

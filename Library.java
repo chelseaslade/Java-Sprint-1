@@ -4,4 +4,6 @@ public class Library {
     //Constructors
 
     //Methods
+    //borrowItem()
+    //searchItems() ??
 }
