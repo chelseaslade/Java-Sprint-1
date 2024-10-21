@@ -30,6 +30,11 @@ class Periodical extends LibraryItem {
         this.isElectronic = isElectronic;
         this.isPrinted = isPrinted;
     }
+
+    //Methods
+    //addNewItem()
+    //editItem()
+    //deleteItem()
 }
 
 //Books
@@ -46,8 +51,8 @@ class Book extends LibraryItem {
         this.isAudio = isAudio;
     }
 
-//Methods
-//addNewItem()
-//editItem()
-//deleteItem()
+    //Methods
+    //addNewItem()
+    //editItem()
+    //deleteItem()
 }
