@@ -18,6 +18,7 @@ public class LibraryItem {
     //addNewItem()
     public void addNewItem(LibraryItem newItem)
     {
+       newItem =  new LibraryItem(id, title, author, ISBN, publisher, numCopies);
     }
 
     //editItem()
@@ -59,6 +60,19 @@ class Periodical extends LibraryItem {
     {
     super.addNewItem(newItem);
     }
+
+    @Override
+    public String toString()
+    {
+        String electronicAvailable = this.isElectronic ? "Yes" : "No";
+        String printAvailable = this.isPrinted ? "Yes" : "No";
+
+        String mainDetails = super.toString();
+        String periodicalDetails = "Electronic Available: " + electronicAvailable + "Print Available: " + printAvailable;
+
+        String periodicalString = mainDetails + periodicalDetails;
+        return periodicalString;
+    }
 }
 
 //Books
@@ -80,5 +94,19 @@ class Book extends LibraryItem {
     public void addNewItem(LibraryItem newItem)
     {
     super.addNewItem(newItem);
+    }
+
+    @Override
+    public String toString()
+    {
+        String electronicAvailable = this.isElectronic ? "Yes" : "No";
+        String printAvailable = this.isPrinted ? "Yes" : "No";
+        String audioAvailable = this.isAudio ? "Yes" : "No";
+
+        String mainDetails = super.toString();
+        String bookDetails = "Electronic Available: " + electronicAvailable + "Print Available: " + printAvailable + "Audio Available: " + audioAvailable;
+
+        String bookString = mainDetails + bookDetails;
+        return bookString;
     }
 }
