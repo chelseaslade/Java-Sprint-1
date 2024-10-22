@@ -99,6 +99,79 @@ public class LibraryItem {
     //editItem()
     public void editItem(LibraryItem existingItem)
     {
+        //Scanner for user input
+        Scanner sc = new Scanner(System.in);
+
+        //Ask about each component.... If null (user does not enter data), maintain old data
+        //Info message
+        System.out.println("Edit item by entering new data where necessary. To skip editing, leave section blank." + "\n");
+
+        //Check each item
+        //Title
+        System.out.println("Current Title: " + this.title);
+        System.out.println("Enter new title: ");
+        String editTitle = sc.nextLine();
+
+        //Author
+        System.out.println("Current Author: " + this.author);
+        System.out.println("Enter new author: ");
+        String editAuthor = sc.nextLine();
+
+        //Publisher
+        System.out.println("Current Publisher: " + this.publisher);
+        System.out.println("Enter new publisher: ");
+        String editPublisher = sc.nextLine();
+
+        //ID
+        System.out.println("Current ID: " + this.id);
+        System.out.println("Enter new ID ");
+        String editID = sc.nextLine();
+
+        //ISBN
+        System.out.println("Current ISBN: " + this.ISBN);
+        System.out.println("Enter new ISBN: ");
+        String editISBN = sc.nextLine();
+
+        //NumCopies
+        System.out.println("Current Number of Copies: " + this.numCopies);
+        System.out.println("Enter new number of copies: ");
+        String editNumCopies = sc.nextLine();
+        
+        //If statements
+        //Check if user input was empty
+        if (!editTitle.isEmpty()) 
+        {
+            this.title = editTitle;
+        }
+
+        if (!editAuthor.isEmpty()) 
+        {
+            this.author = editAuthor;
+        }
+
+        if (!editPublisher.isEmpty()) 
+        {
+            this.publisher = editPublisher;
+        }
+
+        if (!editID.isEmpty()) 
+        {
+            this.id = editID;
+        }
+
+        if (!editISBN.isEmpty()) 
+        {
+            this.ISBN = editISBN;
+        }
+
+        if (!editNumCopies.isEmpty()) 
+        {
+            this.numCopies = Integer.parseInt(editNumCopies);
+        }
+
+        //Close scanner
+        sc.close();
+
     }
 
     //deleteItem()
@@ -109,7 +182,7 @@ public class LibraryItem {
     //toString()
     public String toString() 
     {
-        String bookDetails = "Title:" + this.title + "\n" + "Author: " + this.author + "\n" + "Publisher: " + this.publisher + "\n" + "ID: " + this.id + "\n" + "ISBN: " + this.ISBN;
+        String bookDetails = "Title:" + this.title + "\n" + "Author: " + this.author + "\n" + "Publisher: " + this.publisher + "\n" + "ID: " + this.id + "\n" + "ISBN: " + this.ISBN + "\n" + "Number of copies available: " + numCopies;
         System.out.println(bookDetails);
         return bookDetails;
     }
@@ -143,6 +216,11 @@ class Periodical extends LibraryItem {
         String periodicalString = mainDetails + periodicalDetails;
         System.out.println(periodicalString);
         return periodicalString;
+    }
+    @Override
+    public void editItem(existingItem)
+    {
+        
     }
 }
 

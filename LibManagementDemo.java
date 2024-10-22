@@ -6,6 +6,8 @@ public class LibManagementDemo {
         LibraryItem testItem = new LibraryItem("002", "1984", "George Orwell", "9780451524935", "Signet", 10);
 
         testItem.toString();
+        testItem.editItem(testItem);
+        testItem.toString();
 
         //Add New Item
         // LibraryItem newItem;
