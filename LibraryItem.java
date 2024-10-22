@@ -59,6 +59,9 @@ public class LibraryItem {
             System.out.println("Book available in audio form?: ");
             boolean isAudio = sc.nextBoolean();
 
+            //Close scanner
+            sc.close();
+
             //Return book item
             return new Book(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic, isAudio);
         }
@@ -72,13 +75,20 @@ public class LibraryItem {
             System.out.println("Periodical available in electronic form?: ");
             boolean isElectronic = sc.nextBoolean();
 
+            //Close scanner
+            sc.close();
+
             //Return Periodical item
             return new Periodical(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic);
+            
         }
         //Incorrect input
         else
         {
             System.out.println("Incorrect input. Please select 'B' for book, or 'P' for periodical.");
+            //Close scanner
+            sc.close();
+            //Empty return
             return null;
         }
     }
