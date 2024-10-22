@@ -13,7 +13,18 @@ public class Author {
 
     //Methods
     //addAuthor()
+    public void addAuthor() 
+    {
+    }
+
     //editAuthor()
+    public void editAuthor()
+    {
+    }
+
     //deleteAuthor()
+    public void deleteAuthor() 
+    {
+    }
 
 }

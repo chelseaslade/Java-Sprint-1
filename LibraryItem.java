@@ -15,6 +15,28 @@ public class LibraryItem {
     }
 
     //Methods
+    //addNewItem()
+    public void addNewItem(LibraryItem newItem)
+    {
+    }
+
+    //editItem()
+    public void editItem(LibraryItem existingItem)
+    {
+    }
+
+    //deleteItem()
+    public void deleteItem(LibraryItem itemToDelete)
+    {
+    }
+
+    //toString()
+    public String toString() 
+    {
+        String bookDetails = "Title:" + this.title + "Author: " + this.author + "Publisher: " + this.publisher + "ID: " + this.id + "ISBN: " + this.ISBN;
+        return bookDetails;
+    }
+
 }
 
 //Subclasses
@@ -32,9 +54,11 @@ class Periodical extends LibraryItem {
     }
 
     //Methods
-    //addNewItem()
-    //editItem()
-    //deleteItem()
+    @Override
+    public void addNewItem(LibraryItem newItem)
+    {
+    super.addNewItem(newItem);
+    }
 }
 
 //Books
@@ -52,7 +76,9 @@ class Book extends LibraryItem {
     }
 
     //Methods
-    //addNewItem()
-    //editItem()
-    //deleteItem()
+    @Override
+    public void addNewItem(LibraryItem newItem)
+    {
+    super.addNewItem(newItem);
+    }
 }
