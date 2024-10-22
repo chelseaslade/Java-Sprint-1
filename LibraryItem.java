@@ -39,8 +39,11 @@ public class LibraryItem {
        System.out.println("Enter item ISBN: ");
        String ISBN = sc.nextLine();
        //numCopies
-       System.out.println("Enter item title: ");
+       System.out.println("Enter number of copies available: ");
        int numCopies = sc.nextInt();
+
+       //Next line
+       sc.nextLine();
        
        //Determine periodical/book subclass
         System.out.println("Book or Periodical? Enter B for Book or P for periodical: ");
@@ -106,7 +109,8 @@ public class LibraryItem {
     //toString()
     public String toString() 
     {
-        String bookDetails = "Title:" + this.title + "Author: " + this.author + "Publisher: " + this.publisher + "ID: " + this.id + "ISBN: " + this.ISBN;
+        String bookDetails = "Title:" + this.title + "\n" + "Author: " + this.author + "\n" + "Publisher: " + this.publisher + "\n" + "ID: " + this.id + "\n" + "ISBN: " + this.ISBN;
+        System.out.println(bookDetails);
         return bookDetails;
     }
 
@@ -134,9 +138,10 @@ class Periodical extends LibraryItem {
         String printAvailable = this.isPrinted ? "Yes" : "No";
 
         String mainDetails = super.toString();
-        String periodicalDetails = "Electronic Available: " + electronicAvailable + "Print Available: " + printAvailable;
+        String periodicalDetails = "Electronic Available: " + electronicAvailable + "\n" + "Print Available: " + printAvailable;
 
         String periodicalString = mainDetails + periodicalDetails;
+        System.out.println(periodicalString);
         return periodicalString;
     }
 }
@@ -167,6 +172,7 @@ class Book extends LibraryItem {
         String bookDetails = "Electronic Available: " + electronicAvailable + "Print Available: " + printAvailable + "Audio Available: " + audioAvailable;
 
         String bookString = mainDetails + bookDetails;
+        System.out.println(bookString);
         return bookString;
     }
 }
