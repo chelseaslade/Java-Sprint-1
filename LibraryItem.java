@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class LibraryItem {
     //Attributes
     protected String id, title, author, ISBN, publisher;
@@ -16,9 +18,69 @@ public class LibraryItem {
 
     //Methods
     //addNewItem()
-    public void addNewItem(LibraryItem newItem)
+    public LibraryItem addNewItem()
     {
-       newItem =  new LibraryItem(id, title, author, ISBN, publisher, numCopies);
+       //Scanner for user input
+       Scanner sc = new Scanner(System.in);
+
+       //Title
+       System.out.println("Enter item title: ");
+       String title = sc.nextLine();
+       //Author
+       System.out.println("Enter items author: ");
+       String author = sc.nextLine();
+       //ID
+       System.out.println("Enter item ID: ");
+       String id = sc.nextLine();
+       //Publisher
+       System.out.println("Enter item publisher: ");
+       String publisher = sc.nextLine();
+       //ISBN
+       System.out.println("Enter item ISBN: ");
+       String ISBN = sc.nextLine();
+       //numCopies
+       System.out.println("Enter item title: ");
+       int numCopies = sc.nextInt();
+       
+       //Determine periodical/book subclass
+        System.out.println("Book or Periodical? Enter B for Book or P for periodical: ");
+        String itemType = sc.nextLine();
+
+        //If Book
+        if (itemType.equalsIgnoreCase("B")) 
+        {
+            //Print Available
+            System.out.println("Book available in print? (true/false): ");
+            boolean isPrinted = sc.nextBoolean();
+            //Electronic Available
+            System.out.println("Book available in electronic form?: ");
+            boolean isElectronic = sc.nextBoolean();
+            //Audio Available
+            System.out.println("Book available in audio form?: ");
+            boolean isAudio = sc.nextBoolean();
+
+            //Return book item
+            return new Book(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic, isAudio);
+        }
+        //If Periodical
+        else if (itemType.equalsIgnoreCase("P"))
+        {
+            //Print Available
+            System.out.println("Periodical available in print?: ");
+            boolean isPrinted = sc.nextBoolean();
+            //Electronic Available
+            System.out.println("Periodical available in electronic form?: ");
+            boolean isElectronic = sc.nextBoolean();
+
+            //Return Periodical item
+            return new Periodical(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic);
+        }
+        //Incorrect input
+        else
+        {
+            System.out.println("Incorrect input. Please select 'B' for book, or 'P' for periodical.");
+            return null;
+        }
     }
 
     //editItem()
@@ -56,12 +118,6 @@ class Periodical extends LibraryItem {
 
     //Methods
     @Override
-    public void addNewItem(LibraryItem newItem)
-    {
-    super.addNewItem(newItem);
-    }
-
-    @Override
     public String toString()
     {
         String electronicAvailable = this.isElectronic ? "Yes" : "No";
@@ -90,12 +146,6 @@ class Book extends LibraryItem {
     }
 
     //Methods
-    @Override
-    public void addNewItem(LibraryItem newItem)
-    {
-    super.addNewItem(newItem);
-    }
-
     @Override
     public String toString()
     {

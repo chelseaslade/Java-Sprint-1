@@ -13,8 +13,9 @@ public class Author {
 
     //Methods
     //addAuthor()
-    public void addAuthor() 
+    public void addAuthor(Author newAuthor) 
     {
+        newAuthor = new Author(name, authorDOB, booksWritten); 
     }
 
     //editAuthor()
