@@ -3,17 +3,16 @@ public class LibManagementDemo {
     public static void main(String[] args)
     {
         //Tests
-        LibraryItem testItem = new LibraryItem("002", "1984", "George Orwell", "9780451524935", "Signet", 10);
+        //Initialize Library (Array)
+        Library library = new Library();
 
-        testItem.toString();
-        testItem.editItem(testItem);
-        testItem.toString();
+        //Initialize newItem
+        LibraryItem itemManager = new LibraryItem(null, null, null, null, null, 0);
 
-        //Add New Item
-        // LibraryItem newItem;
-        // newItem = new LibraryItem(null, null, null, null, null, 0).addNewItem();
+        //Add new item
+        itemManager.addNewItem(library);
 
-        // //New item to string
-        // newItem.toString();
+        //Display items in library
+        library.displayItems();
     }
 }

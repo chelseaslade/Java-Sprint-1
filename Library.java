@@ -21,6 +21,21 @@ public class Library {
     {
     }
 
+    //addToLib()
+    public void addToLib(LibraryItem newItem) 
+    {
+        libraryItems.add(newItem);
+    }
+
+    //displayLibItems()
+    public void displayItems() 
+    {
+        for (LibraryItem item : libraryItems) 
+        {
+            System.out.println(item.toString());
+        }
+    }
+
     //deleteItem()
     public void deleteItem(LibraryItem itemToDelete)
     {

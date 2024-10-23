@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class LibraryItem {
     //Attributes
@@ -18,7 +19,7 @@ public class LibraryItem {
 
     //Methods
     //addNewItem()
-    public LibraryItem addNewItem()
+    public LibraryItem addNewItem(Library library)
     {
        //Scanner for user input
        Scanner sc = new Scanner(System.in);
@@ -49,6 +50,8 @@ public class LibraryItem {
         System.out.println("Book or Periodical? Enter B for Book or P for periodical: ");
         String itemType = sc.nextLine();
 
+        LibraryItem newItem = null;
+
         //If Book
         if (itemType.equalsIgnoreCase("B")) 
         {
@@ -62,11 +65,8 @@ public class LibraryItem {
             System.out.println("Book available in audio form?: ");
             boolean isAudio = sc.nextBoolean();
 
-            //Close scanner
-            sc.close();
-
             //Return book item
-            return new Book(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic, isAudio);
+            newItem = new Book(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic, isAudio);
         }
         //If Periodical
         else if (itemType.equalsIgnoreCase("P"))
@@ -78,22 +78,23 @@ public class LibraryItem {
             System.out.println("Periodical available in electronic form?: ");
             boolean isElectronic = sc.nextBoolean();
 
-            //Close scanner
-            sc.close();
-
             //Return Periodical item
-            return new Periodical(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic);
-            
+            newItem = new Periodical(id, title, author, ISBN, publisher, numCopies, isPrinted, isElectronic);
         }
-        //Incorrect input
-        else
+
+        if (newItem != null) 
+        {
+           library.addToLib(newItem);
+        } else
         {
             System.out.println("Incorrect input. Please select 'B' for book, or 'P' for periodical.");
-            //Close scanner
-            sc.close();
-            //Empty return
-            return null;
         }
+
+        //Close scanner
+        sc.close();
+
+        //Return 
+        return newItem;
     }
 
     //editItem()
