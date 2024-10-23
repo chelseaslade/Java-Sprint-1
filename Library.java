@@ -31,22 +31,26 @@ public class Library {
         }
         }
 
-    //searchItems() ??
+    //searchItems() 
     //Search by name, etc, return a string of details about the item including copies available
-    public LibraryItem searchItems(String searchQuery)
+    public String searchItems(String searchQuery)
     {
+        //Lowercase to make search case-insensitive
+       String lowercaseQuery = searchQuery.toLowerCase();
+
        for (LibraryItem item : libraryItems) {
-        if (item.getTitle().equalsIgnoreCase(searchQuery) || 
-            item.getAuthor().equalsIgnoreCase(searchQuery) ||
-            item.getPublisher().equalsIgnoreCase(searchQuery) ||
-            item.getISBN().equals(searchQuery) ||
-            item.getID().equals(searchQuery)) 
+        if (item.getTitle().contains(lowercaseQuery) || 
+            item.getAuthor().contains(lowercaseQuery) ||
+            item.getPublisher().contains(lowercaseQuery) ||
+            item.getISBN().contains(searchQuery) ||
+            item.getID().contains(searchQuery)) 
             {
-                return item;
+                return item.toString();
             }
         }
-        System.out.println("No item found matching search query.");
-        return null;
+        String notFound = ("No item found containing search query: " + searchQuery);
+        System.out.println(notFound);
+        return notFound;
        }
     }
 
