@@ -182,6 +182,36 @@ public class LibraryItem {
         return bookDetails;
     }
 
+    //getTitle()
+    public String getTitle()
+    {
+        return this.title;
+    }
+
+    //getAuthor()
+    public String getAuthor()
+    {
+        return this.author;
+    }
+
+    //getPublisher()
+    public String getPublisher()
+    {
+        return this.publisher;
+    }
+
+    //getISBN()
+    public String getISBN()
+    {
+        return this.ISBN;
+    }
+
+    //getID()
+    public String getID()
+    {
+        return this.id;
+    }
+
 }
 
 //Subclasses
