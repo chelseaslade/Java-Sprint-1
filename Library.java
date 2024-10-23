@@ -5,7 +5,7 @@ public class Library {
     protected ArrayList<LibraryItem> libraryItems;
     
     public Library() {
-        this.items = new ArrayList<>();
+        this.libraryItems = new ArrayList<>();
     }
 
     //Methods
