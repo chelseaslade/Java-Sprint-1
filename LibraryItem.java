@@ -218,9 +218,30 @@ class Periodical extends LibraryItem {
         return periodicalString;
     }
     @Override
-    public void editItem(existingItem)
+    public void editItem(LibraryItem existingItem)
     {
-        
+        super.editItem(existingItem);
+
+        //Open scanner
+        Scanner sc = new Scanner(System.in);
+
+        //Edit periodical attributes
+        System.out.println("Currently - Periodical available in print: " + this.isPrinted);
+        System.out.println("Enter new print availability (true/false)");
+        String editPrinted = sc.nextLine();
+        if (!editPrinted.isEmpty()) {
+            this.isPrinted = Boolean.parseBoolean(editPrinted);
+        }
+
+        System.out.println("Currently - Periodical available in electronic form: " + this.isElectronic);
+        System.out.println("Enter new electronic availability (true/false)");
+        String editElectronic = sc.nextLine();
+        if (!editElectronic.isEmpty()) {
+            this.isElectronic = Boolean.parseBoolean(editElectronic);
+        }
+
+        //Close Scanner
+        sc.close();
     }
 }
 
@@ -252,5 +273,41 @@ class Book extends LibraryItem {
         String bookString = mainDetails + bookDetails;
         System.out.println(bookString);
         return bookString;
+    }
+    @Override
+    public void editItem(LibraryItem existingItem)
+    {
+        super.editItem(existingItem);
+
+        //Open scanner
+        Scanner sc = new Scanner(System.in);
+
+        //Edit periodical attributes
+        //Print
+        System.out.println("Currently - Book available in print: " + this.isPrinted);
+        System.out.println("Enter new print availability (true/false)");
+        String editPrinted = sc.nextLine();
+        if (!editPrinted.isEmpty()) {
+            this.isPrinted = Boolean.parseBoolean(editPrinted);
+        }
+
+        //Electronic
+        System.out.println("Currently - Book available in electronic form: " + this.isElectronic);
+        System.out.println("Enter new electronic availability (true/false)");
+        String editElectronic = sc.nextLine();
+        if (!editElectronic.isEmpty()) {
+            this.isElectronic = Boolean.parseBoolean(editElectronic);
+        }
+
+        //Audio
+        System.out.println("Currently - Book available in audio form: " + this.isAudio);
+        System.out.println("Enter new audio availability (true/false)");
+        String editAudio = sc.nextLine();
+        if (!editAudio.isEmpty()) {
+            this.isAudio = Boolean.parseBoolean(editAudio);
+        }
+
+        //Close Scanner
+        sc.close();
     }
 }
