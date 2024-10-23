@@ -174,11 +174,6 @@ public class LibraryItem {
 
     }
 
-    //deleteItem()
-    public void deleteItem(LibraryItem itemToDelete)
-    {
-    }
-
     //toString()
     public String toString() 
     {
