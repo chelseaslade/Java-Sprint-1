@@ -3,9 +3,11 @@ import java.util.ArrayList;
 public class Library {
     //Attributes
     protected ArrayList<LibraryItem> libraryItems;
+    protected ArrayList<Author> authors;
     
     public Library() {
         this.libraryItems = new ArrayList<>();
+        this.authors = new ArrayList<>();
     }
 
     //Methods
