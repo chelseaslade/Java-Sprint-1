@@ -29,6 +29,27 @@ public class Author {
         //Ask about each component.... If null (user does not enter data), maintain old data
         //Info message
         System.out.println("Edit author by entering new data where necessary. To skip editing, leave section blank." + "\n");
+
+        //Name
+        System.out.println("Current Name: " + this.name);
+        System.out.println("Enter new name: ");
+        String editName = sc.nextLine();
+
+        //DOB
+        System.out.println("Current Date of Birth: " + this.authorDOB);
+        System.out.println("Enter new author date of birth: ");
+        String editDOB = sc.nextLine();
+
+        //If Statements
+        if (!editName.isEmpty()) {
+            this.name = editName;
+        }
+        if (!editDOB.isEmpty()) {
+            this.authorDOB = editDOB;
+        }
+
+        //Close scanner
+        sc.close();
     }
 
     //deleteAuthor()
