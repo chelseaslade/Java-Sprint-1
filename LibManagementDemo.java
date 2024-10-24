@@ -11,7 +11,7 @@ public class LibManagementDemo {
         Book bookOne = new Book("001", "1984", "George Orwell", "9780451524935", "Signet", 10, true, true, true);
         library.addToLib(bookOne);
 
-        while (loop = true)
+        while (loop == true)
         {
             System.out.println("Select an option: " + "\n");
             System.out.println("1. View All Books in Library" + "\n");
@@ -23,10 +23,12 @@ public class LibManagementDemo {
 
             switch (menuOption)
             {
+                //Display items
                 case "1":
                 library.displayItems();
                 break;
 
+                //Add new item
                 case "2":
                 System.out.println("Would you like to add a book or a periodical? (Enter B for book, P for periodical)" + "\n");
                 String addOption = sc.nextLine();
@@ -39,6 +41,15 @@ public class LibManagementDemo {
                 {
                     new Periodical().addNewItem(library, sc);
                 }
+                break;
+
+                //Search item --> Delete or edit item
+                case "3":
+                System.out.println("Enter your search criteria: ");
+                String searchCriteria = sc.nextLine();
+
+                System.out.println(library.searchItems(searchCriteria));
+                break;
 
                 case "4":
                 loop = false;

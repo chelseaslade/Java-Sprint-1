@@ -56,9 +56,9 @@ public class Library {
        String lowercaseQuery = searchQuery.toLowerCase();
 
        for (LibraryItem item : libraryItems) {
-        if (item.getTitle().contains(lowercaseQuery) || 
-            item.getAuthor().contains(lowercaseQuery) ||
-            item.getPublisher().contains(lowercaseQuery) ||
+        if (item.getTitle().toLowerCase().contains(lowercaseQuery) || 
+            item.getAuthor().toLowerCase().contains(lowercaseQuery) ||
+            item.getPublisher().toLowerCase().contains(lowercaseQuery) ||
             item.getISBN().contains(searchQuery) ||
             item.getID().contains(searchQuery)) 
             {
