@@ -50,8 +50,10 @@ public class Library {
 
     //searchItems() 
     //Search by name, etc, return a string of details about the item including copies available
-    public String searchItems(String searchQuery)
+    public ArrayList<LibraryItem> searchItems(String searchQuery)
     {
+        //Add found items to array
+        ArrayList<LibraryItem> searchResults = new ArrayList<>();
         //Lowercase to make search case-insensitive
        String lowercaseQuery = searchQuery.toLowerCase();
 
@@ -62,12 +64,22 @@ public class Library {
             item.getISBN().contains(searchQuery) ||
             item.getID().contains(searchQuery)) 
             {
-                return item.toString();
+                searchResults.add(item); 
             }
         }
-        String notFound = ("No item found containing search query: " + searchQuery);
-        System.out.println(notFound);
-        return notFound;
+
+        if (searchResults.isEmpty())
+        {
+        System.out.println("No item found containing search query: " + searchQuery);
        }
+       else {
+        System.out.println("Search Results: " + "\n");
+        for (int i =0; i < searchResults.size(); i++)
+        {
+            System.out.println("Index " + (i+1) + ". " + searchResults.get(i));
+        }
+       }
+       return searchResults;
     }
+}
 

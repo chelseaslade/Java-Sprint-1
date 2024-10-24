@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class LibManagementDemo {
     public static void main(String[] args)
@@ -10,6 +11,13 @@ public class LibManagementDemo {
 
         Book bookOne = new Book("001", "1984", "George Orwell", "9780451524935", "Signet", 10, true, true, true);
         library.addToLib(bookOne);
+
+        Book bookTwo = new Book("002", "Animal Farm", "George Orwell", "9780141036137", "Penguin UK", 10, true, true, true);
+        library.addToLib(bookTwo);
+
+        Book bookThree = new Book("003", "Pride and Predjudice", "Jane Austen", "9780141439518", "Penguin UK", 10, true, true, true);
+        library.addToLib(bookThree);
+
 
         while (loop == true)
         {
@@ -48,7 +56,27 @@ public class LibManagementDemo {
                 System.out.println("Enter your search criteria: ");
                 String searchCriteria = sc.nextLine();
 
-                System.out.println(library.searchItems(searchCriteria));
+                ArrayList<LibraryItem> searchResults = new ArrayList<>();
+                searchResults = library.searchItems(searchCriteria);
+
+                if (searchResults.size() > 1)
+                {
+                    System.out.println("Select item to edit or delete by entering the index number, or exit to main menu by typing 'exit'.");
+                    continue;
+                }
+
+                System.out.println("Options (Enter 1, 2 or 3): " + "\n");
+                System.out.println("1. Edit item" + "\n");
+                System.out.println("2. Delete item" + "\n");
+                System.out.println("3. Back to Main Menu" + "\n");
+
+                String searchOption = sc.nextLine();
+
+                switch (searchOption)
+                {
+                    case "1":
+
+                }
                 break;
 
                 case "4":
