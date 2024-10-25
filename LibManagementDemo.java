@@ -59,26 +59,91 @@ public class LibManagementDemo {
                 ArrayList<LibraryItem> searchResults = new ArrayList<>();
                 searchResults = library.searchItems(searchCriteria);
 
-                if (searchResults.size() > 1)
+                if (searchResults.isEmpty()) //No items found
                 {
-                    System.out.println("Select item to edit or delete by entering the index number, or exit to main menu by typing 'exit'.");
-                    continue;
+                    System.out.println("No matching items found.");
+                }
+                else if (searchResults.size() == 1) { //One item found
+                    LibraryItem selectedItem = searchResults.get(0);
+                
+
+                    //Options with selectedItem
+                    System.out.println("Options (Enter 1, 2 or 3): " + "\n");
+                    System.out.println("1. Edit item" + "\n");
+                    System.out.println("2. Delete item" + "\n");
+                    System.out.println("3. Back to Main Menu" + "\n");
+
+                    String searchOption = sc.nextLine();
+
+                    switch (searchOption)
+                    {
+                        //Edit
+                        case "1":
+                        selectedItem.editItem(selectedItem, sc);
+                        break;
+                        //Delete
+                        case "2":
+                        library.deleteItem(selectedItem);
+                        System.out.println("Item deleted!");
+                        //Main Menu
+                        case "3":
+                        break;
+                        //Error, return to main menu
+                        default:
+                        System.out.println("Invalid selection");
+                        break;
+                    }
+            }
+            else { //Multiple Items found
+                System.out.println("Select an item from the list using the index number (ex. '1') to edit or delete. Type 'exit' to return to main menu. " + "\n");
+                String itemSelection = sc.nextLine();
+
+                if (itemSelection.equalsIgnoreCase("exit"))
+                {
+                    continue; //Exit to main menu
                 }
 
-                System.out.println("Options (Enter 1, 2 or 3): " + "\n");
-                System.out.println("1. Edit item" + "\n");
-                System.out.println("2. Delete item" + "\n");
-                System.out.println("3. Back to Main Menu" + "\n");
+                try {
+                    int selectedIndex = Integer.parseInt(itemSelection) - 1;
 
-                String searchOption = sc.nextLine();
+                    if (selectedIndex >= 0 && selectedIndex < searchResults.size())
+                    {
+                        LibraryItem selectedItem = searchResults.get(selectedIndex);
 
-                switch (searchOption)
-                {
-                    case "1":
+                        //Edit/Delete options
+                        System.out.println("Options (Enter 1, 2, or 3: )" + "\n");
+                        System.out.println("1. Edit item." + "\n");
+                        System.out.println("2. Delete item" + "\n");
+                        System.out.println("3. Back to Main Menu" + "\n");
 
-                }
-                break;
+                        String searchOption = sc.nextLine();
 
+                        switch (searchOption) 
+                        {
+                            case "1": //Edit
+                            selectedItem.editItem(selectedItem, sc);
+                            break;
+
+                            case "2": //Delete 
+                            library.deleteItem(selectedItem);
+                            System.out.println("Item deleted!");
+                            break;
+
+                            case "3": //Main menu
+                            break;
+                        }
+                    }
+                    else {
+                        System.out.println("Invalid selection. Please try again." + "\n");
+                    }}
+                     catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a number.");
+                    }
+
+            }
+            break;
+
+                //Exit
                 case "4":
                 loop = false;
                 break;
@@ -86,5 +151,4 @@ public class LibManagementDemo {
             }
         }
     }
-
 }
