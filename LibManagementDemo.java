@@ -35,7 +35,7 @@ public class LibManagementDemo {
             {
                 //Borrowed Books
                 case "1":
-                library.displayBorrowed();
+                library.displayBorrowed(sc);
                 break;
 
                 //Display items

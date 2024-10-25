@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Library {
     //Attributes
@@ -42,18 +43,43 @@ public class Library {
     }
 
     //displayBorrowed()
-    public void displayBorrowed()
+    public void displayBorrowed(Scanner sc)
     {
         if (this.borrowedBooks.isEmpty())
         {
             System.err.println("No books borrowed currently." + "\n");
         }
         else {
-        for (LibraryItem item : borrowedBooks) 
+        System.out.println("Borrowed Books: " + "\n");
+        for (int i = 0; i < borrowedBooks.size(); i++) 
         {
-            System.out.println(item.toString());
+            System.out.println((i+1) + ". " + borrowedBooks.get(i).toString());
         }
     }
+
+        System.out.println("Menu: (Enter 1 or 2) " + "\n" + "1. Return Book" + "\n" + "2. Main Menu" + "\n");
+        String returnSelection = sc.nextLine();
+
+        switch (returnSelection)
+        {
+            //Return Book
+            case "1":
+            int selectedIndex = Integer.parseInt(returnSelection) - 1;
+
+            if (selectedIndex >= 0 && selectedIndex < borrowedBooks.size())
+            {
+                LibraryItem selectedItem = borrowedBooks.get(selectedIndex);
+                returnItem(selectedItem);
+            }
+            else {
+                System.out.println("Invalid selection." + "\n");
+            }
+            break;
+
+            //Return to Main Menu
+            case "2":
+            break;
+        }
     }
 
     //displayLibItems()
