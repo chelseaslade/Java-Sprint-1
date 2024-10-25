@@ -9,6 +9,7 @@ public class LibManagementDemo {
         boolean loop = true;
         Scanner sc = new Scanner(System.in);
 
+        //Add Books to Library
         Book bookOne = new Book("001", "1984", "George Orwell", "9780451524935", "Signet", 10, true, true, true);
         library.addToLib(bookOne);
 
@@ -17,6 +18,48 @@ public class LibManagementDemo {
 
         Book bookThree = new Book("003", "Pride and Predjudice", "Jane Austen", "9780141439518", "Penguin UK", 10, true, true, true);
         library.addToLib(bookThree);
+
+        Book bookFour = new Book("004", "The Catcher in the Rye", "J.D. Salinger", "7543321726", "Hachette Book Group", 10, true, true, false);
+        library.addToLib(bookFour);
+
+        Book bookFive = new Book("005", "Jane Eyre", "Charlotte Bronte", "9780141441146", "Penguin Classics", 10, true, false, false);
+        library.addToLib(bookFive);
+
+        Book bookSix = new Book("006", "Sense and Sensibility", "Jane Austen", "0141439661", "Penguin Classics", 10, true, true, false);
+        library.addToLib(bookSix);
+
+        Book bookSeven = new Book("007", "Wuthering Heights", "Emily Bronte", "0141439556", "Penguin Classics", 10, true, true, false);
+        library.addToLib(bookSeven);
+
+        Book bookEight = new Book("008", "To Kill a Mockingbird", "Harper Lee", "0446310786", "Grand Central Publishing", 10, true, true, false);
+        library.addToLib(bookEight);
+
+        Book bookNine = new Book("009", "Fahrenheit 451", "Ray Bradbury", "9781451673319", "Simon and Schuster", 10, true, true, false);
+        library.addToLib(bookNine);
+
+        //Add Authors to Library
+        Author georgeOrwell = new Author("George Orwell", "1903-06-25");
+        georgeOrwell.addBookWritten(bookOne);
+        georgeOrwell.addBookWritten(bookTwo);
+        
+        Author janeAusten = new Author("Jane Austen", "1775-12-16");
+        janeAusten.addBookWritten(bookThree);
+        janeAusten.addBookWritten(bookSix);
+
+        Author jdSalinger = new Author("J.D. Salinger", "1919-01-01");
+        jdSalinger.addBookWritten(bookFour);
+
+        Author charlotteBronte = new Author("Charlotte Bronte", "1816-04-21");
+        charlotteBronte.addBookWritten(bookFive);
+
+        Author emilyBronte = new Author("Emily Bronte", "1818-07-30");
+        emilyBronte.addBookWritten(bookSeven);
+
+        Author harperLee = new Author("Harper Lee", "1926-04-28");
+        harperLee.addBookWritten(bookEight);
+
+        Author rayBradbury = new Author("Ray Bradbury", "1920-08-22");
+        rayBradbury.addBookWritten(bookNine);
 
 
         while (loop == true)

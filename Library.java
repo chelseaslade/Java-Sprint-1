@@ -136,5 +136,15 @@ public class Library {
        }
        return searchResults;
     }
+
+    //displayAuthors()
+    public void displayAuthors()
+    {
+        for (Author author : authors) 
+        {
+            System.out.println(author.toString());
+        }
+    }
+
 }
 
