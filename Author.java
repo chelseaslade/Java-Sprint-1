@@ -52,11 +52,8 @@ public class Author {
     }
 
     //editAuthor()
-    public void editAuthor(Author existingAuthor)
+    public void editAuthor(Author existingAuthor, Scanner sc)
     {
-        //Scanner for user input
-        Scanner sc = new Scanner(System.in);
-
         //Ask about each component.... If null (user does not enter data), maintain old data
         //Info message
         System.out.println("Edit author by entering new data where necessary. To skip editing, leave section blank." + "\n");
@@ -78,14 +75,5 @@ public class Author {
         if (!editDOB.isEmpty()) {
             this.authorDOB = editDOB;
         }
-
-        //Close scanner
-        sc.close();
     }
-
-    //deleteAuthor()
-    public void deleteAuthor() 
-    {
-    }
-
 }

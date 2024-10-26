@@ -5,91 +5,54 @@ public class Library {
     //Attributes
     protected ArrayList<LibraryItem> libraryItems;
     protected ArrayList<Author> authors;
-    protected ArrayList<LibraryItem> borrowedBooks;
+    protected ArrayList<Patron> patrons;
     
     public Library() {
         this.libraryItems = new ArrayList<>();
         this.authors = new ArrayList<>();
-        this.borrowedBooks = new ArrayList<>();
+        this.patrons = new ArrayList<>();
     }
 
     //Methods
-    //borrowItem()
-    public void borrowItem(LibraryItem borrowItem)
-    {
-        borrowedBooks.add(borrowItem);
-        borrowItem.numCopies -= 1;
-        System.out.println("Item borrowed!");
-    }
-
-    //returnItem()
-    public void returnItem(LibraryItem returnItem) 
-    {
-        if (borrowedBooks.contains(returnItem))
-        {
-            borrowedBooks.remove(returnItem);
-            returnItem.numCopies += 1;
-            System.out.println("Book successfully returned!");
-        }
-        else {
-            System.out.println("Item not found in borrowed books.");
-        }
-    }
-
     //addToLib()
     public void addToLib(LibraryItem newItem) 
     {
         libraryItems.add(newItem);
     }
 
-    //displayBorrowed()
-    public void displayBorrowed(Scanner sc)
-    {
-        if (this.borrowedBooks.isEmpty())
-        {
-            System.err.println("No books borrowed currently." + "\n");
-        }
-        else {
-        System.out.println("Borrowed Books: " + "\n");
-        for (int i = 0; i < borrowedBooks.size(); i++) 
-        {
-            System.out.println((i+1) + ". " + borrowedBooks.get(i).toString());
-        }
-    }
-
-        System.out.println("Menu: (Enter 1 or 2) " + "\n" + "1. Return Book" + "\n" + "2. Main Menu" + "\n");
-        String returnSelection = sc.nextLine();
-
-        switch (returnSelection)
-        {
-            //Return Book
-            case "1":
-            int selectedIndex = Integer.parseInt(returnSelection) - 1;
-
-            if (selectedIndex >= 0 && selectedIndex < borrowedBooks.size())
-            {
-                LibraryItem selectedItem = borrowedBooks.get(selectedIndex);
-                returnItem(selectedItem);
-            }
-            else {
-                System.out.println("Invalid selection." + "\n");
-            }
-            break;
-
-            //Return to Main Menu
-            case "2":
-            break;
-        }
-    }
-
     //displayLibItems()
-    public void displayItems() 
+    public void displayItems(Scanner sc) 
     {
-        for (LibraryItem item : libraryItems) 
-        {
-            System.out.println(item.toString());
+        System.out.println("List of all library items:");
+        for (int i = 0; i < libraryItems.size(); i++) {
+            System.out.println((i + 1) + ". " + libraryItems.get(i).toString());
         }
+
+        // Prompt to add a new patron or return
+        System.out.println("Choose one of the following options (1 or 2): ");
+        System.out.println("1. Add a New Book");
+        System.out.println("2. Add a New Periodical");
+        System.out.println("3. Return to Main Menu" + "\n");
+        
+        String choice = sc.nextLine();
+        switch (choice) {
+            case "1":
+                Book newBook = new Book(); 
+                newBook.addNewItem(this, sc); 
+                System.out.println("New Book added successfully!");
+                break;
+            case "2":
+                Periodical newPeriodical = new Periodical(); 
+                newPeriodical.addNewItem(this, sc); 
+                System.out.println("New Periodical added successfully!");
+                break;
+            case "3": 
+                break;
+            default:
+                System.out.println("Invalid selection, returning to main menu.");
+                break;
     }
+}
 
     //deleteItem()
     public void deleteItem(LibraryItem itemToDelete)
@@ -146,5 +109,56 @@ public class Library {
         }
     }
 
+    //addAuthorToLib
+    public void addAuthorToLib(Author newAuthor)
+    {
+        authors.add(newAuthor);
+    }
+
+    //deleteAuthor
+    public void deleteAuthor(Author deleteAuthor) 
+    {
+        authors.remove(deleteAuthor);
+    }
+
+    //addPatronToLib
+    public void addPatronToLib(Patron newPatron)
+    {
+        patrons.add(newPatron);
+    }
+
+    //deletePatron
+    public void deletePatron(Patron delePatron)
+    {
+        patrons.remove(delePatron);
+    }
+
+    public void displayPatrons(Scanner sc) {
+        System.out.println("List of all patrons:");
+        for (int i = 0; i < patrons.size(); i++) {
+            System.out.println((i + 1) + ". " + patrons.get(i).toString());
+        }
+
+        // Prompt to add a new patron or return
+        System.out.println("Choose one of the following options (1 or 2): ");
+        System.out.println("1. Add a new Patron" + "\n");
+        System.out.println("2. Return to Main Menu" + "\n");
+        
+        String choice = sc.nextLine();
+        switch (choice) {
+            case "1":
+                Patron newPatron = Patron.addPatron(sc);
+                addPatronToLib(newPatron);
+                System.out.println("New Patron added successfully!");
+                break;
+            case "2":
+                break;
+            default:
+                System.out.println("Invalid selection, returning to main menu.");
+                break;
+        }
+    }
 }
+
+
 

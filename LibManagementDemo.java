@@ -9,6 +9,13 @@ public class LibManagementDemo {
         boolean loop = true;
         Scanner sc = new Scanner(System.in);
 
+        //Add Patron
+        Employee chelseaMayne = new Employee("Chelsea Mayne", "31 Blank Crescent", "555-555-5555");
+        library.addPatronToLib(chelseaMayne);
+
+        Student janeDoe = new Student("Jane Doe", "50 Library St", "555-493-5959");
+        library.addPatronToLib(janeDoe);
+
         //Add Books to Library
         Book bookOne = new Book("001", "1984", "George Orwell", "9780451524935", "Signet", 10, true, true, true);
         library.addToLib(bookOne);
@@ -39,35 +46,43 @@ public class LibManagementDemo {
 
         //Add Authors to Library
         Author georgeOrwell = new Author("George Orwell", "1903-06-25");
+        library.addAuthorToLib(georgeOrwell);
         georgeOrwell.addBookWritten(bookOne);
         georgeOrwell.addBookWritten(bookTwo);
         
         Author janeAusten = new Author("Jane Austen", "1775-12-16");
+        library.addAuthorToLib(janeAusten);
         janeAusten.addBookWritten(bookThree);
         janeAusten.addBookWritten(bookSix);
 
         Author jdSalinger = new Author("J.D. Salinger", "1919-01-01");
         jdSalinger.addBookWritten(bookFour);
+        library.addAuthorToLib(jdSalinger);
 
         Author charlotteBronte = new Author("Charlotte Bronte", "1816-04-21");
+        library.addAuthorToLib(charlotteBronte);
         charlotteBronte.addBookWritten(bookFive);
+        
 
         Author emilyBronte = new Author("Emily Bronte", "1818-07-30");
+        library.addAuthorToLib(emilyBronte);
         emilyBronte.addBookWritten(bookSeven);
 
         Author harperLee = new Author("Harper Lee", "1926-04-28");
+        library.addAuthorToLib(harperLee);
         harperLee.addBookWritten(bookEight);
 
         Author rayBradbury = new Author("Ray Bradbury", "1920-08-22");
+        library.addAuthorToLib(rayBradbury);
         rayBradbury.addBookWritten(bookNine);
 
 
         while (loop == true)
         {
             System.out.println("Select an option: " + "\n");
-            System.out.println("1. View Borrowed Books" + "\n");
+            System.out.println("1. View All Patrons" + "\n");
             System.out.println("2. View All Books in Library" + "\n");
-            System.out.println("3. Add Item to Library" + "\n");
+            // System.out.println("3. Add Item to Library" + "\n");
             System.out.println("4. Search Library" + "\n");
             System.out.println("5. Exit" + "\n");
 
@@ -78,27 +93,17 @@ public class LibManagementDemo {
             {
                 //Borrowed Books
                 case "1":
-                library.displayBorrowed(sc);
+                library.displayPatrons(sc);
                 break;
 
                 //Display items
                 case "2":
-                library.displayItems();
+                library.displayItems(sc);
                 break;
 
-                //Add new item
+                // 
                 case "3":
-                System.out.println("Would you like to add a book or a periodical? (Enter B for book, P for periodical)" + "\n");
-                String addOption = sc.nextLine();
 
-                if (addOption.equalsIgnoreCase("B"))
-                {
-                    new Book().addNewItem(library, sc);
-                }
-                else if (addOption.equalsIgnoreCase("P"))
-                {
-                    new Periodical().addNewItem(library, sc);
-                }
                 break;
 
                 //Search item --> Delete or edit item
@@ -129,7 +134,7 @@ public class LibManagementDemo {
                     {
                         //Borrow
                         case "1":
-                        library.borrowItem(selectedItem);
+                        
                         break;
                         //Edit
                         case "2":
@@ -176,7 +181,7 @@ public class LibManagementDemo {
                         switch (searchOption) 
                         {
                             case "1": //Borrow
-                            library.borrowItem(selectedItem);
+
                             break;
 
                             case "2": //Edit
