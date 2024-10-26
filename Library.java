@@ -175,19 +175,34 @@ public class Library {
         }
 
         // Prompt to add a new patron or return
-        System.out.println("Choose one of the following options (1 or 2): ");
-        System.out.println("1. Add a new Patron");
-        System.out.println("2. Delete A Patron");
-        System.out.println("3. Return to Main Menu" + "\n");
+        System.out.println("Choose one of the following options (1, 2, 3, or 4): ");
+        System.out.println("1. View Books Borrowed");
+        System.out.println("2. Add a new Patron");
+        System.out.println("3. Delete A Patron");
+        System.out.println("4. Return to Main Menu" + "\n");
         
         String choice = sc.nextLine();
         switch (choice) {
             case "1":
+            System.out.println("Select which patron to view borrowed books: (Select by index number. Ex: '1'");
+            int indexToView = sc.nextInt();
+            sc.nextLine();
+
+            // Check if the index is valid
+            if (indexToView > 0 && indexToView <= patrons.size()) {
+                Patron patronToView = patrons.get(indexToView - 1); // Get the patron based on the index
+                patronToView.displayBorrowedItems(sc);
+            } else {
+                System.out.println("Invalid index, no patron selected.");
+            }
+            break;
+
+            case "2":
                 Patron newPatron = Patron.addPatron(sc);
                 addPatronToLib(newPatron);
                 System.out.println("New Patron added successfully!");
                 break;
-            case "2": 
+            case "3": 
             System.out.println("Select which patron to delete: (Select by index number. Ex: '1'");
             int indexToDelete = sc.nextInt();
             sc.nextLine();
@@ -201,8 +216,10 @@ public class Library {
                 System.out.println("Invalid index, no patron deleted.");
             }
             break;
-            case "3":
+
+            case "4":
                 break;
+
             default:
                 System.out.println("Invalid selection, returning to main menu.");
                 break;
