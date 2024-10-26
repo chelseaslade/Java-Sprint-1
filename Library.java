@@ -100,15 +100,6 @@ public class Library {
        return searchResults;
     }
 
-    //displayAuthors()
-    public void displayAuthors()
-    {
-        for (Author author : authors) 
-        {
-            System.out.println(author.toString());
-        }
-    }
-
     //addAuthorToLib
     public void addAuthorToLib(Author newAuthor)
     {
@@ -121,6 +112,50 @@ public class Library {
         authors.remove(deleteAuthor);
     }
 
+    //displayAuthors()
+    public void displayAuthors(Scanner sc)
+    {
+        System.out.println("List of all authors:");
+        for (int i = 0; i < authors.size(); i++) {
+            System.out.println((i + 1) + ". " + authors.get(i).toString());
+        }
+
+        // Prompt to add a new patron or return
+        System.out.println("Choose one of the following options (1, 2, or 3): ");
+        System.out.println("1. Add a new Author");
+        System.out.println("2. Delete an Author");
+        System.out.println("3. Return to Main Menu" + "\n");
+        
+        String choice = sc.nextLine();
+
+        switch (choice) {
+            case "1":
+                Author newAuthor = Author.addAuthor(sc);
+                addAuthorToLib(newAuthor);
+                System.out.println("New Author added successfully!");
+                break;
+            case "2":   
+                System.out.println("Select which author to delete: (Select by index number. Ex: '1'");
+                int indexToDelete = sc.nextInt();
+                sc.nextLine();
+
+                // Check if the index is valid
+                if (indexToDelete > 0 && indexToDelete <= authors.size()) {
+                    Author authorToDelete = authors.get(indexToDelete - 1); // Get the author based on the index
+                    deleteAuthor(authorToDelete); // Call the method to delete
+                    System.out.println("Author deleted successfully!");
+                } else {
+                    System.out.println("Invalid index, no author deleted.");
+                }
+                break;
+            case "3": 
+                break;
+            default:
+                System.out.println("Invalid selection, returning to main menu.");
+                break;
+        }
+    }
+    
     //addPatronToLib
     public void addPatronToLib(Patron newPatron)
     {
@@ -141,8 +176,9 @@ public class Library {
 
         // Prompt to add a new patron or return
         System.out.println("Choose one of the following options (1 or 2): ");
-        System.out.println("1. Add a new Patron" + "\n");
-        System.out.println("2. Return to Main Menu" + "\n");
+        System.out.println("1. Add a new Patron");
+        System.out.println("2. Delete A Patron");
+        System.out.println("3. Return to Main Menu" + "\n");
         
         String choice = sc.nextLine();
         switch (choice) {
@@ -151,7 +187,21 @@ public class Library {
                 addPatronToLib(newPatron);
                 System.out.println("New Patron added successfully!");
                 break;
-            case "2":
+            case "2": 
+            System.out.println("Select which patron to delete: (Select by index number. Ex: '1'");
+            int indexToDelete = sc.nextInt();
+            sc.nextLine();
+
+            // Check if the index is valid
+            if (indexToDelete > 0 && indexToDelete <= patrons.size()) {
+                Patron patronToDelete = patrons.get(indexToDelete - 1); // Get the patron based on the index
+                deletePatron(patronToDelete); // Call the method to delete
+                System.out.println("Patron deleted successfully!");
+            } else {
+                System.out.println("Invalid index, no patron deleted.");
+            }
+            break;
+            case "3":
                 break;
             default:
                 System.out.println("Invalid selection, returning to main menu.");

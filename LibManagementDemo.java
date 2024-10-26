@@ -82,7 +82,7 @@ public class LibManagementDemo {
             System.out.println("Select an option: " + "\n");
             System.out.println("1. View All Patrons" + "\n");
             System.out.println("2. View All Books in Library" + "\n");
-            // System.out.println("3. Add Item to Library" + "\n");
+            System.out.println("3. View All Authors" + "\n");
             System.out.println("4. Search Library" + "\n");
             System.out.println("5. Exit" + "\n");
 
@@ -103,7 +103,7 @@ public class LibManagementDemo {
 
                 // 
                 case "3":
-
+                library.displayAuthors(sc);
                 break;
 
                 //Search item --> Delete or edit item
@@ -124,7 +124,6 @@ public class LibManagementDemo {
                     //Options with selectedItem
                     System.out.println("Options (Enter 1, 2 3, or 4): " + "\n");
                     System.out.println("1. Borrow item" + "\n");
-                    System.out.println("1. Edit item" + "\n");
                     System.out.println("2. Delete item" + "\n");
                     System.out.println("3. Back to Main Menu" + "\n");
 
@@ -136,7 +135,7 @@ public class LibManagementDemo {
                         case "1":
                         
                         break;
-                        //Edit
+                        //
                         case "2":
                         selectedItem.editItem(selectedItem, sc);
                         break;
@@ -170,11 +169,10 @@ public class LibManagementDemo {
                         LibraryItem selectedItem = searchResults.get(selectedIndex);
 
                         //Edit/Delete options
-                        System.out.println("Options (Enter 1, 2 3, or 4): " + "\n");
+                        System.out.println("Options (Enter 1, 2 or 3): " + "\n");
                         System.out.println("1. Borrow item" + "\n");
-                        System.out.println("2. Edit item" + "\n");
-                        System.out.println("3. Delete item" + "\n");
-                        System.out.println("4. Back to Main Menu" + "\n");
+                        System.out.println("2. Delete item" + "\n");
+                        System.out.println("3. Back to Main Menu" + "\n");
 
                         String searchOption = sc.nextLine();
 
@@ -184,16 +182,12 @@ public class LibManagementDemo {
 
                             break;
 
-                            case "2": //Edit
-                            selectedItem.editItem(selectedItem, sc);
-                            break;
-
-                            case "3": //Delete 
+                            case "2": //Delete 
                             library.deleteItem(selectedItem);
                             System.out.println("Item deleted!");
                             break;
 
-                            case "4": //Main menu
+                            case "3": //Main menu
                             break;
                         }
                     }
