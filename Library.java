@@ -121,21 +121,53 @@ public class Library {
         }
 
         // Prompt to add a new patron or return
-        System.out.println("Choose one of the following options (1, 2, or 3): ");
-        System.out.println("1. Add a new Author");
-        System.out.println("2. Delete an Author");
-        System.out.println("3. Return to Main Menu" + "\n");
+        System.out.println("Choose one of the following options (1, 2, 3, 4 or 5): ");
+        System.out.println("1. View books written by author");
+        System.out.println("2. Add a new Author");
+        System.out.println("3. Edit an Author");
+        System.out.println("4. Delete an Author");
+        System.out.println("5. Return to Main Menu" + "\n");
         
         String choice = sc.nextLine();
 
         switch (choice) {
-            case "1":
+            case "1": //View books written
+            System.out.println("Select which patron to view borrowed books: (Select by index number. Ex: '1'. Type '0' to cancel.");
+            int indexToView = sc.nextInt();
+            sc.nextLine();
+
+            // Check if the index is valid
+            if (indexToView > 0 && indexToView <= authors.size()) {
+                Author authorToView = authors.get(indexToView - 1); // Get the patron based on the index
+                authorToView.displayBooksWritten(sc);
+            } else {
+                System.out.println("Invalid index, no author selected.");
+            }
+            break;
+
+            case "2": //Add new author
                 Author newAuthor = Author.addAuthor(sc);
                 addAuthorToLib(newAuthor);
                 System.out.println("New Author added successfully!");
                 break;
-            case "2":   
-                System.out.println("Select which author to delete: (Select by index number. Ex: '1'");
+
+            case "3": //Edit existing author
+                System.out.println("Select which author to edit: (Select by index number. Ex: '1'. Type '0' to cancel.");
+                int indexToEdit = sc.nextInt();
+                sc.nextLine();
+
+                // Check if the index is valid
+                if (indexToEdit > 0 && indexToEdit <= authors.size()) {
+                    Author authorToEdit = authors.get(indexToEdit - 1);
+                    authorToEdit.editAuthor(authorToEdit, sc);
+                    System.out.println("Author edited successfully!");
+                } else {
+                    System.out.println("Invalid index, no author selected.");
+                }
+                break;
+
+            case "4": //Delete author
+                System.out.println("Select which author to delete: (Select by index number. Ex: '1'. Type '0' to cancel.");
                 int indexToDelete = sc.nextInt();
                 sc.nextLine();
 
@@ -148,9 +180,11 @@ public class Library {
                     System.out.println("Invalid index, no author deleted.");
                 }
                 break;
-            case "3": 
+
+            case "5": //Main menu
                 break;
-            default:
+
+            default: //Default main menu
                 System.out.println("Invalid selection, returning to main menu.");
                 break;
         }
@@ -175,15 +209,16 @@ public class Library {
         }
 
         // Prompt to add a new patron or return
-        System.out.println("Choose one of the following options (1, 2, 3, or 4): ");
+        System.out.println("Choose one of the following options (1, 2, 3, 4, or 5): ");
         System.out.println("1. View Books Borrowed");
         System.out.println("2. Add a new Patron");
-        System.out.println("3. Delete A Patron");
-        System.out.println("4. Return to Main Menu" + "\n");
+        System.out.println("3. Edit a Patron");
+        System.out.println("4. Delete A Patron");
+        System.out.println("5. Return to Main Menu" + "\n");
         
         String choice = sc.nextLine();
         switch (choice) {
-            case "1":
+            case "1": //View borowed items
             System.out.println("Select which patron to view borrowed books: (Select by index number. Ex: '1'");
             int indexToView = sc.nextInt();
             sc.nextLine();
@@ -197,12 +232,28 @@ public class Library {
             }
             break;
 
-            case "2":
+            case "2": //Add Patron
                 Patron newPatron = Patron.addPatron(sc);
                 addPatronToLib(newPatron);
                 System.out.println("New Patron added successfully!");
                 break;
-            case "3": 
+
+            case "3": //Edit patron
+            System.out.println("Select which patron to edit: (Select by index number. Ex: '1'. Type '0' to cancel.");
+            int indexToEdit = sc.nextInt();
+            sc.nextLine();
+
+            // Check if the index is valid
+            if (indexToEdit > 0 && indexToEdit <= patrons.size()) {
+                Patron patronToEdit = patrons.get(indexToEdit - 1);
+                patronToEdit.editPatron(patronToEdit, sc);
+                System.out.println("Patron edited successfully!");
+            } else {
+                System.out.println("Invalid index, no patron selected.");
+            }
+            break;
+
+            case "4": //Delete patron
             System.out.println("Select which patron to delete: (Select by index number. Ex: '1'");
             int indexToDelete = sc.nextInt();
             sc.nextLine();
@@ -217,7 +268,7 @@ public class Library {
             }
             break;
 
-            case "4":
+            case "5": //Main menu
                 break;
 
             default:
