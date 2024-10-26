@@ -9,14 +9,14 @@ public class LibManagementDemo {
         boolean loop = true;
         Scanner sc = new Scanner(System.in);
 
-        //Add Patron
+        //Add Initial Patrons
         Employee chelseaMayne = new Employee("Chelsea Mayne", "31 Blank Crescent", "555-555-5555");
         library.addPatronToLib(chelseaMayne);
 
         Student janeDoe = new Student("Jane Doe", "50 Library St", "555-493-5959");
         library.addPatronToLib(janeDoe);
 
-        //Add Books to Library
+        //Add Initial Books to Library
         Book bookOne = new Book("001", "1984", "George Orwell", "9780451524935", "Signet", 10, true, true, true);
         library.addToLib(bookOne);
 
@@ -44,7 +44,7 @@ public class LibManagementDemo {
         Book bookNine = new Book("009", "Fahrenheit 451", "Ray Bradbury", "9781451673319", "Simon and Schuster", 10, true, true, false);
         library.addToLib(bookNine);
 
-        //Add Authors to Library
+        //Add Initial Authors to Library
         Author georgeOrwell = new Author("George Orwell", "1903-06-25");
         library.addAuthorToLib(georgeOrwell);
         georgeOrwell.addBookWritten(bookOne);
@@ -76,7 +76,7 @@ public class LibManagementDemo {
         library.addAuthorToLib(rayBradbury);
         rayBradbury.addBookWritten(bookNine);
 
-
+        //Main program loop
         while (loop == true)
         {
             System.out.println("Select an option: " + "\n");
@@ -124,18 +124,35 @@ public class LibManagementDemo {
                     //Options with selectedItem
                     System.out.println("Options (Enter 1, 2 3, or 4): " + "\n");
                     System.out.println("1. Borrow item" + "\n");
-                    System.out.println("2. Delete item" + "\n");
-                    System.out.println("3. Back to Main Menu" + "\n");
+                    System.out.println("2. Edit item" + "\n");
+                    System.out.println("3. Delete item" + "\n");
+                    System.out.println("4. Back to Main Menu" + "\n");
 
                     String searchOption = sc.nextLine();
 
                     switch (searchOption)
                     {
-                        //Borrow
+                        //Borrow item
                         case "1":
-                        
+                        System.out.println("What patron is borrowing the book?" + "\n");
+                        library.simplePatronDisplay(sc);
+
+                        //Select patron by index
+                        int selectedPatronIndex = sc.nextInt();
+                        sc.nextLine();
+
+                        //Validate
+                        if (selectedPatronIndex > 0 && selectedPatronIndex <= library.patrons.size())
+                        {
+                          Patron selectedPatron  = library.patrons.get(selectedPatronIndex -1);
+                          selectedPatron.borrowItem(selectedItem);
+                        }
+                        else
+                        {
+                            System.out.println("Invalid patron selection.");
+                        }
                         break;
-                        //
+                        //Edit item
                         case "2":
                         selectedItem.editItem(selectedItem, sc);
                         break;
@@ -172,14 +189,31 @@ public class LibManagementDemo {
                         System.out.println("Options (Enter 1, 2 or 3): " + "\n");
                         System.out.println("1. Borrow item" + "\n");
                         System.out.println("2. Delete item" + "\n");
-                        System.out.println("3. Back to Main Menu" + "\n");
+                        System.out.println("3. Edit item" + "\n");
+                        System.out.println("4. Back to Main Menu" + "\n");
 
                         String searchOption = sc.nextLine();
 
                         switch (searchOption) 
                         {
                             case "1": //Borrow
-
+                            System.out.println("What patron is borrowing the book?" + "\n");
+                            library.simplePatronDisplay(sc);
+    
+                            //Select patron by index
+                            int selectedPatronIndex = sc.nextInt();
+                            sc.nextLine();
+    
+                            //Validate
+                            if (selectedPatronIndex > 0 && selectedPatronIndex <= library.patrons.size())
+                            {
+                              Patron selectedPatron  = library.patrons.get(selectedPatronIndex -1);
+                              selectedPatron.borrowItem(selectedItem);
+                            }
+                            else
+                            {
+                                System.out.println("Invalid patron selection.");
+                            }
                             break;
 
                             case "2": //Delete 
@@ -187,7 +221,11 @@ public class LibManagementDemo {
                             System.out.println("Item deleted!");
                             break;
 
-                            case "3": //Main menu
+                            case "3": //Edit item
+                            selectedItem.editItem(selectedItem, sc);
+                            break;
+
+                            case "4": //Main menu
                             break;
                         }
                     }

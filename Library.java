@@ -208,6 +208,14 @@ public class Library {
                 break;
         }
     }
+
+    public void simplePatronDisplay(Scanner sc)
+    {
+        System.out.println("List of patrons:");
+        for (int i = 0; i < patrons.size(); i++) {
+            System.out.println((i + 1) + ". " + patrons.get(i).getName());
+        }
+    }
 }
 
 
