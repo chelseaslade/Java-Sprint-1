@@ -310,6 +310,7 @@ class Book extends LibraryItem {
     @Override
     public void editItem(LibraryItem existingItem, Scanner sc)
     {
+        super.editItem(existingItem, sc);
         //Edit periodical attributes
         //Print
         System.out.println("Currently - Book available in print: " + this.isPrinted);
