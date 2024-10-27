@@ -33,6 +33,19 @@ public class Author {
         return booksWritten;
     }
 
+    public void displayBooksWritten(Scanner sc)
+    {
+        if (booksWritten.isEmpty()) {
+            System.out.println("No items listed written by " + name + ".");
+            return;
+        }
+
+        System.out.println("Written items by " + name + ":");
+        for (int i = 0; i < booksWritten.size(); i++) {
+            System.out.println((i + 1) + ". " + booksWritten.get(i).getTitle());
+        }
+    }
+
     //toString()
     public String toString()
     {
