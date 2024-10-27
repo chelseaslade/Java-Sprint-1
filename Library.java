@@ -29,7 +29,7 @@ public class Library {
         }
 
         // Prompt to add a new patron or return
-        System.out.println("Choose one of the following options (1 or 2): ");
+        System.out.println("Choose one of the following options (1, 2 or 3): ");
         System.out.println("1. Add a New Book");
         System.out.println("2. Add a New Periodical");
         System.out.println("3. Return to Main Menu" + "\n");

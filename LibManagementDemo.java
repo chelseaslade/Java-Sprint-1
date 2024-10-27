@@ -122,10 +122,10 @@ public class LibManagementDemo {
                     LibraryItem selectedItem = searchResults.get(0);
                 
                     //Options with selectedItem
-                    System.out.println("Options (Enter 1, 2 3, or 4): " + "\n");
-                    System.out.println("1. Borrow item" + "\n");
-                    System.out.println("2. Edit item" + "\n");
-                    System.out.println("3. Delete item" + "\n");
+                    System.out.println("Options (Enter 1, 2 3, or 4): ");
+                    System.out.println("1. Borrow item");
+                    System.out.println("2. Edit item");
+                    System.out.println("3. Delete item");
                     System.out.println("4. Back to Main Menu" + "\n");
 
                     String searchOption = sc.nextLine();
@@ -170,7 +170,7 @@ public class LibManagementDemo {
                     }
             }
             else { //Multiple Items found
-                System.out.println("Select an item from the list using the index number (ex. '1') to edit or delete. Type 'exit' to return to main menu. " + "\n");
+                System.out.println("Select an item from the list using the index number (ex. '1') to borrow, edit or delete. Type 'exit' to return to main menu. " + "\n");
                 String itemSelection = sc.nextLine();
 
                 if (itemSelection.equalsIgnoreCase("exit"))
@@ -186,10 +186,10 @@ public class LibManagementDemo {
                         LibraryItem selectedItem = searchResults.get(selectedIndex);
 
                         //Edit/Delete options
-                        System.out.println("Options (Enter 1, 2 or 3): " + "\n");
-                        System.out.println("1. Borrow item" + "\n");
-                        System.out.println("2. Delete item" + "\n");
-                        System.out.println("3. Edit item" + "\n");
+                        System.out.println("Options (Enter 1, 2 or 3): ");
+                        System.out.println("1. Borrow item");
+                        System.out.println("2. Delete item");
+                        System.out.println("3. Edit item");
                         System.out.println("4. Back to Main Menu" + "\n");
 
                         String searchOption = sc.nextLine();
